@@ -148,12 +148,12 @@ STATICFILES_DIRS = (
 #     template_path + '/templates',
 # )
 
-TEMPLATE_PATH_DIRS = (
-    os.path.join(BASE_DIR, 'templates'),
-    os.path.join('../../', BASE_DIR, 'templates'),
-)
+# TEMPLATE_PATH_DIRS = (
+#     os.path.join(BASE_DIR, 'templates'),
+#     os.path.join('../../', BASE_DIR, 'templates'),
+# )
 
-TEMPLATE_DIRS = TEMPLATE_PATH_DIRS
+# TEMPLATE_DIRS = TEMPLATE_PATH_DIRS
 
 
 # Default primary key field type
