@@ -80,16 +80,16 @@ WSGI_APPLICATION = 'smile.wsgi.application'
 
 DATABASES = {
 
-    "default": dj_database_url.config(default=DATABASE_URL, conn_max_age=1800),
+    # "default": dj_database_url.config(default=DATABASE_URL, conn_max_age=1800),
 
-    # 'default': {
-    #     'ENGINE': 'django.db.backends.postgresql_psycopg2',
-    #     'NAME': 'smile_db',
-    #     'USER': 'postgres',
-    #     'PASSWORD': 'postgres',
-    #     'HOST': 'localhost',
-    #     'PORT': '',
-    # }
+    'default': {
+        'ENGINE': 'django.db.backends.postgresql_psycopg2',
+        'NAME': 'smile_db',
+        'USER': 'postgres',
+        'PASSWORD': 'postgres',
+        'HOST': 'localhost',
+        'PORT': '',
+    }
 }
 
 
@@ -139,6 +139,19 @@ STATIC_URL = '/static/'
 STATICFILES_DIRS = (
     os.path.join(BASE_DIR, 'static'),
 )
+
+# BASE_DIR = os.path.dirname(os.path.abspath(__file__))
+# If it doesn't work, declare your template path in a variable like
+# template_path = '../../' + BASE_DIR
+# TEMPLATE_PATH_DIRS = (
+#     template_path + '/templates',
+# )
+
+TEMPLATE_PATH_DIRS = (
+    os.path.join(BASE_DIR, 'templates'),
+)
+
+TEMPLATE_DIRS = TEMPLATE_PATH_DIRS
 
 
 # Default primary key field type
