@@ -41,6 +41,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'products.apps.ProductsConfig',
     'api.apps.ApiConfig',
+    'templates',
 
 ]
 
@@ -149,6 +150,7 @@ STATICFILES_DIRS = (
 
 TEMPLATE_PATH_DIRS = (
     os.path.join(BASE_DIR, 'templates'),
+    os.path.join('../../', BASE_DIR, 'templates'),
 )
 
 TEMPLATE_DIRS = TEMPLATE_PATH_DIRS
