@@ -11,6 +11,7 @@ psycopg2 = "*"
 pylint-django = "*"
 django-tastypie = "*"
 gunicorn = "*"
+whitenoise = "*"
 
 [dev-packages]
 
