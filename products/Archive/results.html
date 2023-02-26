@@ -8,6 +8,11 @@
 
   <form method="get">
     {{ filter.form.as_p }} <button type="submit">Search</button>
+    {% if filter.is_bound %}
+        &nbsp;&nbsp;<a href="{% url 'products:index' %}">Show All</a>
+    {% endif %}
+    
+
   </form>
     <table class="table table-bordered table-hover">
         <thead>

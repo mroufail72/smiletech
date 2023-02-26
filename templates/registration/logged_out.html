@@ -1,0 +1,10 @@
+{% extends "admin/base_site.html" %}
+
+{% block content %}
+
+<p>You are now leaving Smile! administration.</p>
+
+<p><a href="{% url 'admin:index' %}">Login Again</a></p> 
+<p><a href="{% url 'products:index' %}">Search Products</a></p>
+
+{% endblock %}

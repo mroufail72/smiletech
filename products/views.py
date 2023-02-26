@@ -8,16 +8,27 @@ from django.template import loader
 
 # Create your views here.
 
-
 def index(request):
     """Index"""
-    products = Product.objects.all()
-    return render(request, 'products/index.html', {'products': products})
+    f = ProductFilter(
+        request.GET, queryset=Product.objects.all().order_by('code'))
+    has_filter = any(field in request.GET for field in set(f.get_fields()))
+
+    return render(request, 'products/index.html', {
+        'filter': f,
+        'has_filter': has_filter
+    })
 
 
 def detail(request, product_id):
     product = get_object_or_404(Product, pk=product_id)
     return render(request, 'products/detail.html', {'product': product})
+
+
+# def index(request):
+#     """Index"""
+#     products = Product.objects.all()
+#     return render(request, 'products/index.html', {'products': products})
 
 
 # def showlist(request):
@@ -36,13 +47,24 @@ def detail(request, product_id):
     # products = Product.objects.all
     # return render(request, "products/results2.html", {'products': products})
 
-def search(request):
-    product_list = Product.objects.all()
-    product_filter = ProductFilter(request.GET, queryset=product_list)
-    return render(request, 'products/search/product_list.html', {'filter': product_filter})
+# def search(request):
+#     product_list = Product.objects.all()
+#     product_filter = ProductFilter(request.GET, queryset=product_list)
+#     return render(request, 'products/search/product_list.html', {'filter': product_filter})
 
 
-def results(request):
-    product_list = Product.objects.all()
-    product_filter = ProductFilter(request.GET, queryset=product_list)
-    return render(request, 'products/results.html', {'filter': product_filter})
+# def results(request):
+#     product_list = Product.objects.all()
+#     product_filter = ProductFilter(request.GET, queryset=product_list)
+#     return render(request, 'products/results.html', {'filter': product_filter})
+
+
+# def results(request):
+#     f = ProductFilter(
+#         request.GET, queryset=Product.objects.all().order_by('code'))
+#     has_filter = any(field in request.GET for field in set(f.get_fields()))
+
+#     return render(request, 'products/results.html', {
+#         'filter': f,
+#         'has_filter': has_filter
+#     })
