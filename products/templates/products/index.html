@@ -1,7 +1,30 @@
 {% extends "base.html" %}
 
 {% block content %}
-    <table class="table table-bordered table-hover">
+
+{% comment %} <form class="d-flex" role="search">
+        <input class="form-control me-2" list="productlist" type="search" placeholder="Search" aria-label="Search">
+          <datalist id="productlist">
+            {% for results in showproduct %}
+                    <option value="{{results.name}}">
+            {% endfor %}
+          </datalist>
+        <button class="btn btn-outline-success" type="submit">Search</button>
+</form> {% endcomment %}
+
+
+  <form method="get">
+    {{ filter.form.as_p }}
+    <button type="submit">Search</button>
+  </form>
+  <ul>
+  {% for product in filter %}
+    <li>{{ product.name }}</li>
+  {% endfor %}
+  </ul>
+{% endblock %}
+
+    {% comment %} <table class="table table-bordered table-hover">
         <thead>
             <tr>
                 <th>Code</th>
@@ -24,4 +47,4 @@
             
         </tbody>
     </table>
-{% endblock  %}
+{% endblock  %} {% endcomment %}

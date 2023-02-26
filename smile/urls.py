@@ -23,11 +23,13 @@ product_resource = api.models.ProductResource()
 type_resource = api.models.TypeResource()
 
 urlpatterns = [
-    path('', views.home),
+    # path('', views.home),
+    path('', views.showlist, name='showlist'),
+    path('base.html', views.showlist, name='showlist'),
     path('admin/', admin.site.urls),
     path('products/', include('products.urls')),
     path('api/', include(product_resource.urls)),
-    path('api/', include(type_resource.urls)),
+    path('api/', include(type_resource.urls))
 ]
 
 admin.site.site_header = "Smile! Lookup Admin"

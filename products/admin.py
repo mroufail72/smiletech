@@ -8,7 +8,7 @@ class TypeAdmin(admin.ModelAdmin):
 
 class ProductAdmin(admin.ModelAdmin):
     list_display = ('code', 'type', 'name', 'description')
-    exclude = ('date_created',)
+    exclude = ('date_created', 'selected_yn')
 
 
 admin.site.register(Type, TypeAdmin)
