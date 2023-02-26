@@ -34,9 +34,15 @@ def detail(request, product_id):
 #     }
 #     return HttpResponse(template.render(context, request))
     # products = Product.objects.all
-    # return render(request, "products/results.html", {'products': products})
+    # return render(request, "products/results2.html", {'products': products})
 
 def search(request):
     product_list = Product.objects.all()
     product_filter = ProductFilter(request.GET, queryset=product_list)
     return render(request, 'products/search/product_list.html', {'filter': product_filter})
+
+
+def results(request):
+    product_list = Product.objects.all()
+    product_filter = ProductFilter(request.GET, queryset=product_list)
+    return render(request, 'products/results.html', {'filter': product_filter})
