@@ -7,7 +7,7 @@ import django_filters
 class Type(models.Model):
     """Type Class"""
     name = models.CharField(max_length=100)
-    description = models.CharField(max_length=255)
+    description = models.CharField(max_length=255, blank=True, null=True)
 
     def __str__(self):
         return str(self.name)
@@ -17,10 +17,11 @@ class Product(models.Model):
     """Product Class"""
     code = models.CharField(max_length=100)
     name = models.CharField(max_length=100)
-    description = models.CharField(max_length=255)
+    description = models.CharField(max_length=255, blank=True, null=True)
     type = models.ForeignKey(Type, on_delete=models.CASCADE)
-    selected_yn = models.BooleanField(default=False)
-    date_created = models.DateTimeField(default=timezone.now)
+    selected_yn = models.BooleanField(default=False, blank=True, null=True)
+    date_created = models.DateTimeField(
+        default=timezone.now, blank=True, null=True)
 
 
 class ProductList(models.Model):
